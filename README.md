@@ -1,6 +1,4 @@
-# VCRS-Modelling
-Inter IIT Tech Meet 13.0 -- Vapor Compression Cycle Modelling
-
+This repository presents a concise overview of the modeling and optimization of a Vapor Compression Air Conditioning (VCAC) system using MATLAB/Simulink. The project focuses on achieving energy-efficient cooling and dehumidification under various operational conditions.
 
 📘 Project Overview
 
@@ -8,81 +6,32 @@ A detailed VCAC system was developed based on the thermodynamic vapor compressio
 
 1. 🔍 Introduction
 
-The system is designed to maintain indoor thermal comfort efficiently. It comprises a single compressor and uses thermodynamic models for temperature and humidity regulation.
+The VCAC system was designed to maintain indoor thermal comfort in an energy-efficient manner. It employs a single compressor and relies on thermodynamic models to regulate both temperature and humidity levels. The primary goal of the system was to ensure optimal cooling performance under varying environmental conditions while keeping energy consumption low.
 
 2. 🧰 Model Design
 
-Simulink and Simscape Fluids were used to construct and simulate the VCAC system.
-
-Key components include the compressor, condenser, expansion valve, and evaporator.
-
-Controllers and sensors manage temperature and pressure regulation.
+The VCAC system was modeled and simulated using MATLAB/Simulink with the Simscape Fluids library. The simulation incorporates key thermodynamic components, including a compressor, condenser, expansion valve, and evaporator. Control systems and sensors were implemented to monitor and regulate temperature and pressure. This setup facilitated a realistic representation of system dynamics and control response.
 
 3. 🧪 Refrigerant Selection
 
-Several refrigerants were compared based on COP, GWP, ODP, flammability, and toxicity.
-R1234yf was finalized due to its balanced performance and environmental safety.
+Several refrigerants were evaluated based on parameters such as coefficient of performance (COP), global warming potential (GWP), ozone depletion potential (ODP), flammability, and toxicity. After comparison, R1234yf was selected as the refrigerant due to its favorable balance between performance and environmental safety. It provides efficient cooling while minimizing environmental impact.
 
 4. ⚙️ Component Overview
 
-Compressor
-
-Scroll Compressor 2 was selected for compatibility with R1234yf.
-
-Condenser
-
-Designed for efficient heat rejection using a coiled tube configuration and optimized fin area.
-
-Expansion Valve
-
-Thermostatic type modeled based on nominal and peak mass flow conditions.
-
-Evaporator
-
-Designed to maximize heat absorption using a 40m coiled tube and optimized surface area.
+The system employs Scroll Compressor 2, which is compatible with the chosen refrigerant, R1234yf. The condenser was designed using a coiled tube configuration with optimized fin area to ensure effective heat rejection. A thermostatic expansion valve was modeled to handle both nominal and peak mass flow conditions, allowing for stable pressure control. The evaporator, constructed with a 40-meter coiled tube and enhanced surface area, ensures efficient heat absorption from the indoor environment.
 
 5. 🎛️ Control Logic
 
-A PI controller was implemented to maintain the desired indoor temperature by adjusting the speeds of the compressor, indoor fan, and outdoor fan.
+A Proportional-Integral (PI) controller was developed to regulate the indoor temperature by adjusting the speeds of the compressor, indoor fan, and outdoor fan. The proportional gain (Kp) was fixed at 1, while the integral gain (Ki) was scheduled based on the target temperature using a gain scheduling method. This approach enhances system responsiveness and stability.
 
-Kp (Proportional Gain): Fixed at 1
-
-Ki (Integral Gain): Scheduled based on the desired temperature using gain scheduling
-
-Benefits of using a gain scheduling PI controller is as follows .
-
-Eliminates steady-state error
-
-Improves control precision
-
-Enhances dynamic adaptability
-
-Ensures system stability
-
-Boosts energy efficiency
+To implement gain scheduling, a lookup table was defined with breakpoints at specific temperature values [17, 19, 21, 23, 25, 27, 29] °C and corresponding Ki values [0.00004, 0.00005, 0.000064, 0.00009, 0.00014, 0.00030, 0.0004]. Linear interpolation between these points allows for smooth transitions in controller behavior. This configuration helps eliminate steady-state errors, improve precision, enable adaptability to varying loads, ensure stable system response, and promote energy efficiency.
 
 6. 📈 Performance Metrics
 
-ISEER (Indian Seasonal Energy Efficiency Ratio)
+The performance of the system was evaluated using the Indian Seasonal Energy Efficiency Ratio (ISEER), which accounts for seasonal variations in temperature. Cooling capacity and power input were calculated across standard temperature bins, resulting in an ISEER value of 3.385.
 
-Cooling capacity and power input were calculated across seasonal temperature bins.
-
-ISEER = 3.385
-
-EER (Energy Efficiency Ratio)
-
-EER Formula: EER = Cooling Capacity (Btu/hr) / Power Input (Watts)
-
-Cooling capacity calculated using Q = M(h1 - h4)
-
-Average EER = ISEER × 3.412 = 11.55
+In addition to ISEER, the Energy Efficiency Ratio (EER) was assessed. EER is defined as the ratio of cooling capacity (in Btu/hr) to power input (in Watts). Cooling capacity was calculated using the formula Q = M(h1 - h4), where M is the mass flow rate and h1, h4 are the enthalpies across the evaporator. Converting Q to Btu/hr and applying the EER formula yielded an average EER of 11.55, using the relation EER = ISEER × 3.412.
 
 7. ✅ Testing Conditions
 
-Performance was evaluated using standardized ISEER conditions:
-
-Outdoor Temperature: 35°C
-
-Indoor Dry Bulb Set Point: 27°C
-
-Indoor Wet Bulb Set Point: 19°C
+System performance was validated under standardized ISEER test conditions. These included an outdoor temperature of 35°C, an indoor dry bulb set point of 27°C, and an indoor wet bulb set point of 19°C. These conditions simulate realistic operational scenarios and help benchmark system efficiency and control accuracy. 
