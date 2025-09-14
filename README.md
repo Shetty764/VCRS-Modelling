@@ -1,5 +1,7 @@
 This repository presents a concise overview of the modeling and optimization of a Vapor Compression Air Conditioning (VCAC) system using MATLAB/Simulink. The project focuses on achieving energy-efficient cooling and dehumidification under various operational conditions.
 
+<img width="687" height="363" alt="image" src="https://github.com/user-attachments/assets/6f79cd23-d8dc-4853-9d80-cb574ec6d490" />
+
 📘 Project Overview
 
 A detailed VCAC system was developed based on the thermodynamic vapor compression cycle. It includes component selection, refrigerant analysis, simulation modeling, and performance evaluation.
